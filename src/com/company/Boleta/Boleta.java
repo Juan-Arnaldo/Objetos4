@@ -34,5 +34,4 @@ public class Boleta {
         return LocalDate.now().plusMonths(1);
     }
 
-
 }
