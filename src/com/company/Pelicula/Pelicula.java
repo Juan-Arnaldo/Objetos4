@@ -10,6 +10,7 @@ public class Pelicula {
     private String paisOrigen;
     private String descripcion;
     private int stock;
+    private int alquiladas;
 
     public Pelicula(String genero, String titulo, String fechaLanzamiento, double duracion, String clasificacionAudiencia, String paisOrigen, String descripcion, int stock) {
         this.genero = genero;
@@ -20,6 +21,7 @@ public class Pelicula {
         this.paisOrigen = paisOrigen;
         this.descripcion = descripcion;
         this.stock = stock;
+        this.alquiladas = 0;
     }
 
     public String getGenero() {
@@ -65,5 +67,9 @@ public class Pelicula {
                 ", descripcion='" + descripcion + '\'' +
                 ", stock=" + stock +
                 '}';
+    }
+
+    public void peliculaAlquilada(Pelicula pelicula){
+        pelicula.alquiladas += + 1;
     }
 }

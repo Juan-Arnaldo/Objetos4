@@ -1,5 +1,6 @@
 package com.company.VideoStore;
 
+import com.company.Boleta.Boleta;
 import com.company.Cliente.Cliente;
 import com.company.Pelicula.Pelicula;
 import static com.company.Main.crear;
@@ -23,13 +24,20 @@ public class VideoStore {
         listaCliente.add(aGuardar);
     }
 
-    public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String pelicula, String cliente){
-        if(corroborarPelicula(listaPeliculas, pelicula)){
-            if (corroborarStock(listaPeliculas, pelicula)){
-                if (corroborarCliente(listaClientes, cliente)){
-                    System.out.println("Generando Boleta");
+    public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String nombrePelicula, String nombreCliente){
+        Cliente cliente = null;
+        Pelicula pelicula = null;
+        //pelicula = corroborarPelicula(listaPeliculas, nombrePelicula);
+        if(pelicula != null){
+            if (pelicula.getStock() > 0){
+                //cliente = corroborarCliente(listaClientes, nombreCliente);
+                if (cliente != null){
+                    cliente.agregarBoleta(cliente.getBoletas(), new Boleta(cliente, pelicula));
+                    pelicula.peliculaAlquilada(pelicula);
                 }else {
-                    crear();
+                    cliente = crear();
+                    cliente.agregarBoleta(cliente.getBoletas(), new Boleta(cliente, pelicula));
+                    pelicula.peliculaAlquilada(pelicula);
                 }
             }else{
                 System.out.println("No hay stock de la pelicula ingresada, lo sentimos\n");
