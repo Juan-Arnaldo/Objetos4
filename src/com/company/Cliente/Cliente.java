@@ -41,7 +41,7 @@ public class Cliente {
                 '}';
     }
 
-    public void agregarBoleta(ArrayList<Boleta> listaBoletas, Boleta nueva){
+   public void agregarBoleta(ArrayList<Boleta> listaBoletas, Boleta nueva){
         listaBoletas.add(nueva);
     }
 

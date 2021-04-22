@@ -92,6 +92,12 @@ public class VideoStore {
         }
     }
 
+    public static void mostrarTitulos(ArrayList<Pelicula> listaPelicula){
+        for (Pelicula pelicula : listaPelicula) {
+            System.out.println(pelicula.getTitulo());
+        }
+    }
+
     public void alquileresLimite(ArrayList<Cliente> listaCliente){
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){

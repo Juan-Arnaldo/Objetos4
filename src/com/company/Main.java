@@ -16,18 +16,23 @@ public class Main {
         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
 
         VideoStore tiendaRoberto = new VideoStore(listaClientes, listaPeliculas);
-        Scanner sc = new Scanner(System.in);
 
-        //loteDeClientes(tiendaRoberto.getListacliente());
+
+        loteDeClientes(tiendaRoberto.getListacliente());
         loteDePelis(tiendaRoberto.getListapelicula());
+
+        Scanner sc = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         int opc;
 
         do{
             System.out.println("\tVideoStore de Roberto\n\n");
+
             System.out.println("1. Alquilar pelicula");
             System.out.println("2. Alquileres Vigentes");
             System.out.println("3. Pelicula mas alquilada");
+            System.out.println("4. Mostrar detalles de pelicula\n");
             System.out.println("\n0. Salir");
 
             System.out.println("Ingrese la opcion que quiera: ");
@@ -42,6 +47,17 @@ public class Main {
                     break;
                 case 3:
                     tiendaRoberto.peliculasMasAlquilada(tiendaRoberto.getListapelicula());
+                    break;
+                case 4:
+                    mostrarPeliculas(listaPeliculas);
+                    System.out.println("Ingrese el titulo de la pelicula a mostrar");
+                    String titulo=input.nextLine();
+
+                    Pelicula aux=tiendaRoberto.corroborarPelicula(listaPeliculas,titulo);
+                    if(aux!=null){
+                        System.out.println(aux.toString());
+                    }
+                    break;
                 case 0:
                     System.out.println("Saliendo...");
                     break;
@@ -58,19 +74,19 @@ public class Main {
         double duracion;
         int stock;
         System.out.println("titulo:");
-        titulo= input.next();
+        titulo= input.nextLine();
         System.out.println("genero:");
-        genero = input.next();
+        genero = input.nextLine();
         System.out.println("fecha de lanzamiento:");
         fechaLanzamiento = input.next();
         System.out.println("duracion:");
         duracion = input.nextDouble();
         System.out.println("clasificacion de audiencia:");
-        clasificacionAudiencia = input.next();
+        clasificacionAudiencia = input.nextLine();
         System.out.println("pais de origen:");
-        paisOrigen = input.next();
+        paisOrigen = input.nextLine();
         System.out.println("descripcion:");
-        descripcion = input.next();
+        descripcion = input.nextLine();
         System.out.println("stock:");
         stock = input.nextInt();
 
@@ -130,6 +146,12 @@ public class Main {
         listaCliente.add(clienteaux4);
         Cliente clienteaux5= new Cliente("momo",223,"ruta 2");
         listaCliente.add(clienteaux5);
+    }
+
+    public static void mostrarPeliculas(ArrayList<Pelicula> listaPelicula){
+        for (Pelicula pelicula : listaPelicula) {
+            System.out.println(pelicula.getTitulo());
+        }
     }
 
 }
