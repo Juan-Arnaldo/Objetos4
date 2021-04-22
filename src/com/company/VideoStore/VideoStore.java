@@ -4,7 +4,6 @@ import com.company.Boleta.Boleta;
 import com.company.Cliente.Cliente;
 import com.company.Pelicula.Pelicula;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -14,9 +13,17 @@ public class VideoStore {
     private ArrayList<Pelicula> Listapelicula;
     private ArrayList<Cliente> Listacliente;
 
-    public void VideoStore(ArrayList<Cliente> listacliente, ArrayList<Pelicula> listapelicula) {
-        this.Listacliente = listacliente;
-        this.Listapelicula = listapelicula;
+    public VideoStore(ArrayList<Cliente> listaCliente, ArrayList<Pelicula> listaPelicula) {
+        this.Listacliente = listaCliente;
+        this.Listapelicula = listaPelicula;
+    }
+
+    public ArrayList<Pelicula> getListapelicula() {
+        return Listapelicula;
+    }
+
+    public ArrayList<Cliente> getListacliente() {
+        return Listacliente;
     }
 
     public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String nombrePelicula, double telefonoCliente) {
@@ -27,11 +34,14 @@ public class VideoStore {
             if (pelicula.getStock() > 0) {
                 cliente = corroborarCliente(listaClientes, telefonoCliente);
                 if (cliente != null) {
-                    cliente.agregarBoleta(cliente.getBoletas(), new Boleta(cliente, pelicula));
+                    Boleta nuevaBoleta = new Boleta(cliente, pelicula);
+                    cliente.agregarBoleta(cliente.getBoletas(), nuevaBoleta);
                     pelicula.peliculaAlquilada(pelicula);
                 } else {
                     cliente = crear();
-                    cliente.agregarBoleta(cliente.getBoletas(), new Boleta(cliente, pelicula));
+                    listaClientes.add(cliente);
+                    Boleta nuevaBoleta = new Boleta(cliente, pelicula);
+                    cliente.agregarBoleta(cliente.getBoletas(), nuevaBoleta);
                     pelicula.peliculaAlquilada(pelicula);
                 }
             } else {
@@ -75,11 +85,31 @@ public class VideoStore {
     public void alquileresVigente(ArrayList<Cliente> listaCliente){
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){
-                if(boleta.getFechaDevolucion() == LocalDate.now()){
+                if(boleta.getFechaDevolucion().isAfter(LocalDate.now())){
                     System.out.println(boleta.toString(cliente, boleta.getPeliula()));
                 }
             }
         }
+    }
+
+    public void alquileresLimite(ArrayList<Cliente> listaCliente){
+        for(Cliente cliente : listaCliente){
+            for (Boleta boleta : cliente.getBoletas()){
+                if(boleta.getFechaDevolucion().isEqual(LocalDate.now())){
+                    System.out.println(boleta.toString(cliente, boleta.getPeliula()));
+                }
+            }
+        }
+    }
+
+    public void peliculasMasAlquilada(ArrayList<Pelicula> listaPelicula){
+        Pelicula mayor = listaPelicula.get(0);
+        for (Pelicula pelicula : listaPelicula){
+            if (mayor.getAlquiladas() < pelicula.getAlquiladas()){
+                mayor = pelicula;
+            }
+        }
+        System.out.println(mayor.toString());
     }
 
 }

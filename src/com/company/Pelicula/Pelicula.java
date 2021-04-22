@@ -1,5 +1,19 @@
 package com.company.Pelicula;
 
+enum genero{
+    Acción, Aventura, Comedia,
+    Drama, Horror , Documenta
+}
+enum clasificacionAudiencia{
+    G, //(Apta para todos los públicos)
+    PG, //(Sugiere la compañía de un adulto para los menores de 10 años)
+    PG13, //(Sugiere la compañía de un adulto para los menores de 13 años)
+    R ,//(Restringido a menores de 17 años si no es con la compañía de un adulto)
+    NC17, //(Contenido sólo para mayores de 18 años)
+    UNRATED //(Películas que no han pasado el proceso de calificación)
+
+}
+
 public class Pelicula {
 
     private String genero;
@@ -56,17 +70,18 @@ public class Pelicula {
         return stock;
     }
 
+    public int getAlquiladas() {
+        return alquiladas;
+    }
+
     public String toString() {
-        return "Pelicula{" +
-                "genero='" + genero + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", fechaLanzamiento='" + fechaLanzamiento + '\'' +
-                ", duracion=" + duracion +
-                ", clasificacionAudiencia='" + clasificacionAudiencia + '\'' +
-                ", paisOrigen='" + paisOrigen + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", stock=" + stock +
-                '}';
+        return "Titulo: " + getTitulo() +
+                "\nGenero: " + getGenero() +
+                "\nDuracion: " + getDuracion() +
+                "\nFecha de lanzamiento: " + getFechaLanzamiento() +
+                "\nPais de origen: " + getPaisOrigen() +
+                "\nDescripcion: " + getDescripcion();
+
     }
 
     public void peliculaAlquilada(Pelicula pelicula){
