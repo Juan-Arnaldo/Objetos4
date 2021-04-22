@@ -10,36 +10,47 @@ import com.company.VideoStore.VideoStore;
 public class Main {
 
     public static void main(String[] args){
-        ArrayList<Pelicula> listaPeliculas=null;
-        ArrayList<Cliente> listaClientes=null;
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
 
-        loteDePelis(listaPeliculas);
-        loteDeClientes(listaClientes);
+        VideoStore tiendaRoberto = new VideoStore(listaClientes, listaPeliculas);
+
+
+        loteDeClientes(tiendaRoberto.getListacliente());
+        loteDePelis(tiendaRoberto.getListapelicula());
         tiendaRoberto.solicitarPelicula(listaPeliculas,listaClientes,"dbz",223);
 
-
         Scanner sc = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         int opc;
 
         do{
             System.out.println("\tVideoStore de Roberto\n\n");
+            System.out.println("1. Alquilar pelicula\n");
+            System.out.println("2. Mostrar detalles de pelicula\n");
+            System.out.println("1. Alquilar pelicula\n");
             System.out.println("1. Alquilar pelicula\n");
 
             System.out.println("Ingrese la opcion que quiera: ");
             opc = sc.nextInt();
 
             switch (opc){
-                case 1:
-                    break;
-
                 case 0:
                     System.out.println("Saliendo...");
                     break;
+                case 1:
+                    break;
                 case 2:
                     mostrarPeliculas(listaPeliculas);
+                    System.out.println("Ingrese el titulo de la pelicula a mostrar");
+                    String titulo=input.nextLine();
+
+                    Pelicula aux=tiendaRoberto.corroborarPelicula(listaPeliculas,titulo);
+                    if(aux!=null){
+                        System.out.println(aux.toString());
+                    }
                     break;
                 case 3:
-                    System.out.println("Saliendo...");
                     break;
                 default:
                     System.out.println("La opcion ingresada no existe");
@@ -130,8 +141,10 @@ public class Main {
 
     public static void mostrarPeliculas(ArrayList<Pelicula> listaPelicula){
         for (Pelicula pelicula : listaPelicula) {
-            System.out.println(pelicula.toString());
+            System.out.println(pelicula.getTitulo());
         }
     }
+
+
 
 }

@@ -14,9 +14,17 @@ public class VideoStore {
     private ArrayList<Pelicula> Listapelicula;
     private ArrayList<Cliente> Listacliente;
 
-    public void VideoStore(ArrayList<Cliente> listacliente, ArrayList<Pelicula> listapelicula) {
-        this.Listacliente = listacliente;
-        this.Listapelicula = listapelicula;
+    public VideoStore(ArrayList<Cliente> listaCliente, ArrayList<Pelicula> listaPelicula) {
+        this.Listacliente = listaCliente;
+        this.Listapelicula = listaPelicula;
+    }
+
+    public ArrayList<Pelicula> getListapelicula() {
+        return Listapelicula;
+    }
+
+    public ArrayList<Cliente> getListacliente() {
+        return Listacliente;
     }
 
     public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String nombrePelicula, double telefonoCliente) {
@@ -72,8 +80,6 @@ public class VideoStore {
         return resultado;
     }
 
-<<<<<<< HEAD
-=======
     public void alquileresVigente(ArrayList<Cliente> listaCliente){
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){
@@ -83,6 +89,11 @@ public class VideoStore {
             }
         }
     }
->>>>>>> 9bb10129b0c064347bd8bf23443bc59f24890af8
+
+    public static void mostrarTitulos(ArrayList<Pelicula> listaPelicula){
+        for (Pelicula pelicula : listaPelicula) {
+            System.out.println(pelicula.getTitulo());
+        }
+    }
 
 }

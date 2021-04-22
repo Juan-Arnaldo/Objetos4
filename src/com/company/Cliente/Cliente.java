@@ -8,7 +8,7 @@ public class Cliente {
     private String nombre;
     private double telefono;
     private String direccion;
-    private ArrayList<Boleta> boletas;
+    private ArrayList<Boleta> boletas = new ArrayList<>();
 
     public Cliente(String nombre, double telefono, String direccion) {
         this.nombre = nombre;
@@ -40,7 +40,7 @@ public class Cliente {
                 '}';
     }
 
-    public void agregarBoleta(ArrayList<Boleta> listaBoletas, Boleta nueva){
+   public void agregarBoleta(ArrayList<Boleta> listaBoletas, Boleta nueva){
         listaBoletas.add(nueva);
     }
 

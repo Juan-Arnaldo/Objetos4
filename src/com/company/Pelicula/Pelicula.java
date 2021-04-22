@@ -57,16 +57,13 @@ public class Pelicula {
     }
 
     public String toString() {
-        return "Pelicula{" +
-                "genero='" + genero + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", fechaLanzamiento='" + fechaLanzamiento + '\'' +
-                ", duracion=" + duracion +
-                ", clasificacionAudiencia='" + clasificacionAudiencia + '\'' +
-                ", paisOrigen='" + paisOrigen + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", stock=" + stock +
-                '}';
+        return "Titulo: " + getTitulo() +
+                "\nGenero: " + getGenero() +
+                "\nDuracion: " + getDuracion() +
+                "\nFecha de lanzamiento: " + getFechaLanzamiento() +
+                "\nPais de origen: " + getPaisOrigen() +
+                "\nDescripcion: " + getDescripcion();
+
     }
 
     public void peliculaAlquilada(Pelicula pelicula){
