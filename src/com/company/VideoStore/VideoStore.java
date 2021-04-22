@@ -4,7 +4,6 @@ import com.company.Boleta.Boleta;
 import com.company.Cliente.Cliente;
 import com.company.Pelicula.Pelicula;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -35,11 +34,14 @@ public class VideoStore {
             if (pelicula.getStock() > 0) {
                 cliente = corroborarCliente(listaClientes, telefonoCliente);
                 if (cliente != null) {
-                    cliente.agregarBoleta(cliente.getBoletas(), new Boleta(cliente, pelicula));
+                    Boleta nuevaBoleta = new Boleta(cliente, pelicula);
+                    cliente.agregarBoleta(cliente.getBoletas(), nuevaBoleta);
                     pelicula.peliculaAlquilada(pelicula);
                 } else {
                     cliente = crear();
-                    cliente.agregarBoleta(cliente.getBoletas(), new Boleta(cliente, pelicula));
+                    listaClientes.add(cliente);
+                    Boleta nuevaBoleta = new Boleta(cliente, pelicula);
+                    cliente.agregarBoleta(cliente.getBoletas(), nuevaBoleta);
                     pelicula.peliculaAlquilada(pelicula);
                 }
             } else {
@@ -83,17 +85,40 @@ public class VideoStore {
     public void alquileresVigente(ArrayList<Cliente> listaCliente){
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){
-                if(boleta.getFechaDevolucion() == LocalDate.now()){
+                if(boleta.getFechaDevolucion().isAfter(LocalDate.now())){
                     System.out.println(boleta.toString(cliente, boleta.getPeliula()));
                 }
             }
         }
     }
 
+<<<<<<< HEAD
     public static void mostrarTitulos(ArrayList<Pelicula> listaPelicula){
         for (Pelicula pelicula : listaPelicula) {
             System.out.println(pelicula.getTitulo());
         }
     }
 
+=======
+    public void alquileresLimite(ArrayList<Cliente> listaCliente){
+        for(Cliente cliente : listaCliente){
+            for (Boleta boleta : cliente.getBoletas()){
+                if(boleta.getFechaDevolucion().isEqual(LocalDate.now())){
+                    System.out.println(boleta.toString(cliente, boleta.getPeliula()));
+                }
+            }
+        }
+    }
+
+    public void peliculasMasAlquilada(ArrayList<Pelicula> listaPelicula){
+        Pelicula mayor = listaPelicula.get(0);
+        for (Pelicula pelicula : listaPelicula){
+            if (mayor.getAlquiladas() < pelicula.getAlquiladas()){
+                mayor = pelicula;
+            }
+        }
+        System.out.println(mayor.toString());
+    }
+
+>>>>>>> 3400fdca63a0f18e5476fcdcc7ac083f85e7c3f5
 }

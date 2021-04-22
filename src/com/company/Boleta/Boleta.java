@@ -6,11 +6,13 @@ import com.company.Pelicula.Pelicula;
 import java.time.LocalDate;
 
 public class Boleta {
+    //Atributos
     private LocalDate fechaRetiro;
     private LocalDate fechaDevolucion;
     private Cliente cliente;
     private Pelicula peliula;
 
+    //Constructor
     public Boleta(Cliente cliente, Pelicula pelicula){
         this.fechaRetiro = fechaRetiro();
         this.fechaDevolucion = fechaDevolucion();
@@ -18,6 +20,7 @@ public class Boleta {
         this.peliula = pelicula;
     }
 
+    //Getters
     public LocalDate getFechaRetiro() {
         return fechaRetiro;
     }
@@ -34,17 +37,20 @@ public class Boleta {
         return peliula;
     }
 
+    //Retorna el dia
     private LocalDate fechaRetiro(){
         return LocalDate.now();
     }
 
+    //Retorna el dia pero 1 mes dsp
     private LocalDate fechaDevolucion(){
         return LocalDate.now().plusMonths(1);
     }
 
+    //ToString de Boleta
     public String toString(Cliente cliente, Pelicula pelicula) {
         return"Cliente: " + cliente.getNombre() +
-                "\nNombre de pelicula: " + pelicula.getTitulo() + "Genero: " + pelicula.getGenero() +
+                "\nNombre de pelicula: " + pelicula.getTitulo() + "\tGenero: " + pelicula.getGenero() +
                 "\nFecha de retiro: " + getFechaRetiro() +
                 "\nFecha de devolucion: " + getFechaDevolucion();
     }
