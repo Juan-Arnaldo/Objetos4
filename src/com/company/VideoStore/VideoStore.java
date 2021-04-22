@@ -25,12 +25,13 @@ public class VideoStore {
 
     public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String pelicula, String cliente){
         if(corroborarPelicula(listaPeliculas, pelicula)){
-            if (corroborarStock(listaPeliculas, pelicula)){
-                if (corroborarCliente(listaClientes, cliente)){
+            if (corroborarStock(listaPeliculas,pelicula)!=0){
+                /*if (corroborarCliente(listaClientes, cliente)){
                     System.out.println("Generando Boleta");
                 }else {
                     crear();
-                }
+                }*/
+                System.out.println("TA LA PELI BREO");
             }else{
                 System.out.println("No hay stock de la pelicula ingresada, lo sentimos\n");
             }
@@ -38,5 +39,7 @@ public class VideoStore {
             System.out.println("La pelicula ingresada no esta disponible\n");
         }
     }
+
+
 
 }

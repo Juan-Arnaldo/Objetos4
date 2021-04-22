@@ -1,5 +1,7 @@
 package com.company.Cliente;
 
+import java.util.ArrayList;
+
 public class Cliente {
     private String nombre;
     private double telefono;
@@ -21,6 +23,10 @@ public class Cliente {
 
     public String getDireccion() {
         return direccion;
+    }
+
+    public boolean corroborarCliente(ArrayList<Cliente> listaClientes, String cliente){
+        return listaClientes.contains(cliente);
     }
 
     public String toString() {
