@@ -26,6 +26,14 @@ public class Boleta {
         return fechaDevolucion;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Pelicula getPeliula() {
+        return peliula;
+    }
+
     private LocalDate fechaRetiro(){
         return LocalDate.now();
     }
@@ -34,4 +42,10 @@ public class Boleta {
         return LocalDate.now().plusMonths(1);
     }
 
+    public String toString(Cliente cliente, Pelicula pelicula) {
+        return"Cliente: " + cliente.getNombre() +
+                "\nNombre de pelicula: " + pelicula.getTitulo() + "Genero: " + pelicula.getGenero() +
+                "\nFecha de retiro: " + getFechaRetiro() +
+                "\nFecha de devolucion: " + getFechaDevolucion();
+    }
 }

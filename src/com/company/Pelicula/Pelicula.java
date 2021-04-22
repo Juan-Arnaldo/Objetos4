@@ -56,8 +56,6 @@ public class Pelicula {
         return stock;
     }
 
-
-
     public String toString() {
         return "Pelicula{" +
                 "genero='" + genero + '\'' +
