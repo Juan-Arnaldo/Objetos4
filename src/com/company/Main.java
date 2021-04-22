@@ -94,8 +94,6 @@ public class Main {
         System.out.println("Ingrese el telefono del cliente: ");
         telefono = sc.nextDouble();
 
-        //ArrayList<Boleta> listaBoleta = new ArrayList<>();
-
         Cliente cliente = new Cliente(nombre, telefono, direccion);
         return cliente;
     }
