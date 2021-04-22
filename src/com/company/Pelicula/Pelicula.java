@@ -1,7 +1,5 @@
 package com.company.Pelicula;
 
-import java.util.ArrayList;
-
 public class Pelicula {
 
     private String genero;
@@ -56,20 +54,7 @@ public class Pelicula {
         return stock;
     }
 
-    public boolean corroborarPelicula(ArrayList<Pelicula> listaPeliculas, String pelicula){
-        return listaPeliculas.contains(pelicula);
-    }
 
-    public int corroborarStock(ArrayList<Pelicula>  listaPeliculas, String pelicula){
-        for (int i=0;i<listaPeliculas.size();i++) {
-
-            if(listaPeliculas.get(i).titulo==pelicula){
-                return stock;
-            }
-        }
-
-        return 0;
-    }
 
     public String toString() {
         return "Pelicula{" +
