@@ -3,12 +3,12 @@ package com.company;
 import com.company.Cliente.Cliente;
 
 import java.util.Scanner;
+import com.company.Pelicula.Pelicula;
+import com.company.VideoStore.VideoStore;
 
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("olaaaaaaaaaa");
-    }
+    public static void main(String[] args){
 
     public static Cliente crear(){
         Scanner sc = new Scanner(System.in);
@@ -26,5 +26,8 @@ public class Main {
 
         Cliente cliente = new Cliente(nombre, telefono, direccion);
         return cliente;
+
+    VideoStore tiendaRoberto = new VideoStore();
+    tiendaRoberto.alquilarPelicula("megamente","mina","repetto",223);
     }
 }

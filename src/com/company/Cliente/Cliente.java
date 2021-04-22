@@ -30,6 +30,8 @@ public class Cliente {
 
     public ArrayList<Boleta> getBoletas() {
         return boletas;
+    public boolean corroborarCliente(ArrayList<Cliente> listaClientes, String cliente){
+        return listaClientes.contains(cliente);
     }
 
     public String toString() {
