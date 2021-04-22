@@ -15,7 +15,7 @@ public class VideoStore {
 
 
     public void alquilarPelicula(String pelicula, String cliente, String direccion, double telefono){
-        loteDePelis();
+        loteDePelis(); //BODEGA DE PELICULAS Y CLIENTES
         loteDeClientes();
 
         Pelicula resultadopeli = null;
