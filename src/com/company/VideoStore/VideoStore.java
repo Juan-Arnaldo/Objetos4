@@ -5,17 +5,18 @@ import com.company.Cliente.Cliente;
 import com.company.Pelicula.Pelicula;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static com.company.Main.crear;
 
 public class VideoStore {
-    private Pelicula pelicula[];
-    private Cliente cliente[];
+    private ArrayList<Pelicula> Listapelicula;
+    private ArrayList<Cliente> Listacliente;
 
-    public void VideoStore(Pelicula pelicula[], Cliente cliente[]) {
-        this.cliente = cliente;
-        this.pelicula = pelicula;
+    public void VideoStore(ArrayList<Cliente> listacliente, ArrayList<Pelicula> listapelicula) {
+        this.Listacliente = listacliente;
+        this.Listapelicula = listapelicula;
     }
 
     public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String nombrePelicula, double telefonoCliente) {
@@ -71,5 +72,17 @@ public class VideoStore {
         return resultado;
     }
 
+<<<<<<< HEAD
+=======
+    public void alquileresVigente(ArrayList<Cliente> listaCliente){
+        for(Cliente cliente : listaCliente){
+            for (Boleta boleta : cliente.getBoletas()){
+                if(boleta.getFechaDevolucion() == LocalDate.now()){
+                    System.out.println(boleta.toString(cliente, boleta.getPeliula()));
+                }
+            }
+        }
+    }
+>>>>>>> 9bb10129b0c064347bd8bf23443bc59f24890af8
 
 }
