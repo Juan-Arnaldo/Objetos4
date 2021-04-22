@@ -92,14 +92,12 @@ public class VideoStore {
         }
     }
 
-<<<<<<< HEAD
     public static void mostrarTitulos(ArrayList<Pelicula> listaPelicula){
         for (Pelicula pelicula : listaPelicula) {
             System.out.println(pelicula.getTitulo());
         }
     }
 
-=======
     public void alquileresLimite(ArrayList<Cliente> listaCliente){
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){
@@ -120,5 +118,4 @@ public class VideoStore {
         System.out.println(mayor.toString());
     }
 
->>>>>>> 3400fdca63a0f18e5476fcdcc7ac083f85e7c3f5
 }
