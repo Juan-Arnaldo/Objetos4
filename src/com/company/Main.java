@@ -10,10 +10,13 @@ import com.company.VideoStore.VideoStore;
 public class Main {
 
     public static void main(String[] args){
-        ArrayList<Pelicula> listaPeliculas;
-        ArrayList<Cliente> listaClientes;
+        ArrayList<Pelicula> listaPeliculas=null;
+        ArrayList<Cliente> listaClientes=null;
 
-        VideoStore tiendaRoberto = new VideoStore();
+        loteDePelis(listaPeliculas);
+        loteDeClientes(listaClientes);
+        tiendaRoberto.solicitarPelicula(listaPeliculas,listaClientes,"dbz",223);
+
 
         Scanner sc = new Scanner(System.in);
         int opc;
@@ -30,6 +33,12 @@ public class Main {
                     break;
 
                 case 0:
+                    System.out.println("Saliendo...");
+                    break;
+                case 2:
+                    mostrarPeliculas(listaPeliculas);
+                    break;
+                case 3:
                     System.out.println("Saliendo...");
                     break;
                 default:
@@ -85,7 +94,7 @@ public class Main {
         return cliente;
     }
 
-    public void loteDePelis(ArrayList<Pelicula> listaPelicula){
+    public static void loteDePelis(ArrayList<Pelicula> listaPelicula){
         Pelicula peli = new Pelicula("apt","dbz","1996",200,"19","Bolivia","Buena peli para mirarla con la rata en la mano",3);
         listaPelicula.add(peli);
         Pelicula peli2 = new Pelicula("apt","duro de matar","1996",200,"19","Bolivia","Buena peli para mirarla con la rata en la mano",3);
@@ -106,7 +115,7 @@ public class Main {
 
 
 
-    public void loteDeClientes(ArrayList<Cliente> listaCliente){
+    public static void loteDeClientes(ArrayList<Cliente> listaCliente){
         Cliente clienteaux= new Cliente("sana",223,"matienzo");
         listaCliente.add(clienteaux);
         Cliente clienteaux2= new Cliente("pepe",223,"villa del parque");
@@ -117,6 +126,12 @@ public class Main {
         listaCliente.add(clienteaux4);
         Cliente clienteaux5= new Cliente("momo",223,"ruta 2");
         listaCliente.add(clienteaux5);
+    }
+
+    public static void mostrarPeliculas(ArrayList<Pelicula> listaPelicula){
+        for (Pelicula pelicula : listaPelicula) {
+            System.out.println(pelicula.toString());
+        }
     }
 
 }
