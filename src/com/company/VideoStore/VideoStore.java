@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static com.company.Main.crear;
-import static com.company.Main.mostrarClientes;
 
 public class VideoStore {
     private ArrayList<Pelicula> Listapelicula;
@@ -30,16 +29,16 @@ public class VideoStore {
     public void solicitarPelicula(ArrayList<Pelicula> listaPeliculas, ArrayList<Cliente> listaClientes, String nombrePelicula, double telefonoCliente) {
         Cliente cliente = null;
         Pelicula pelicula = null;
-        pelicula = corroborarPelicula(listaPeliculas, nombrePelicula);
+        pelicula = corroborarPelicula(listaPeliculas, nombrePelicula); //Corroboro la pelicula y en caso de ser valida la devuelvo
         if (pelicula != null) {
             if (pelicula.getStock() > 0) {
-                cliente = corroborarCliente(listaClientes, telefonoCliente);
+                cliente = corroborarCliente(listaClientes, telefonoCliente); // Corroboro el cliente y en caso de ser valido lo devuelvo
                 if (cliente != null) {
-                    Boleta nuevaBoleta = new Boleta(cliente, pelicula);
+                    Boleta nuevaBoleta = new Boleta(cliente, pelicula); // Se crea la boleta
                     cliente.agregarBoleta(cliente.getBoletas(), nuevaBoleta);
                     pelicula.peliculaAlquilada(pelicula);
                 } else {
-                    cliente = crear();
+                    cliente = crear(); // En caso que el cliente no exista, se crea y se crea la boleta
                     listaClientes.add(cliente);
                     Boleta nuevaBoleta = new Boleta(cliente, pelicula);
                     cliente.agregarBoleta(cliente.getBoletas(), nuevaBoleta);
@@ -119,7 +118,6 @@ public class VideoStore {
         System.out.println(mayor.toString());
     }
 
-    //Quiere poder consultar los últimos 10 alquileres de cada cliente.
     public void consultaAlquileres(Cliente cliente){
         for (Boleta boleta : cliente.getBoletas()){
             System.out.println(boleta.toString());
