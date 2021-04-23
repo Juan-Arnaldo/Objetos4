@@ -48,9 +48,9 @@ public class Boleta {
     }
 
     //ToString de Boleta
-    public String toString(Cliente cliente, Pelicula pelicula) {
+    public String toString() {
         return"Cliente: " + cliente.getNombre() +
-                "\nNombre de pelicula: " + pelicula.getTitulo() + "\tGenero: " + pelicula.getGenero() +
+                "\nNombre de pelicula: " + getPeliula().getTitulo() + "\tGenero: " + getPeliula().getGenero() +
                 "\nFecha de retiro: " + getFechaRetiro() +
                 "\nFecha de devolucion: " + getFechaDevolucion();
     }

@@ -133,8 +133,6 @@ public class Main {
         listaPelicula.add(peli8);
     }
 
-
-
    public static void loteDeClientes(ArrayList<Cliente> listaCliente){
         Cliente clienteaux= new Cliente("sana",123,"matienzo");
         listaCliente.add(clienteaux);
@@ -151,6 +149,12 @@ public class Main {
     public static void mostrarPeliculas(ArrayList<Pelicula> listaPelicula){
         for (Pelicula pelicula : listaPelicula) {
             System.out.println(pelicula.getTitulo());
+        }
+    }
+
+    public static void mostrarClientes(ArrayList<Cliente> listaCliente){
+        for (Cliente cliente : listaCliente) {
+            System.out.println(cliente.getNombre() + cliente.getTelefono());
         }
     }
 

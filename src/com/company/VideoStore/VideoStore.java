@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static com.company.Main.crear;
+import static com.company.Main.mostrarClientes;
 
 public class VideoStore {
     private ArrayList<Pelicula> Listapelicula;
@@ -86,7 +87,7 @@ public class VideoStore {
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){
                 if(boleta.getFechaDevolucion().isAfter(LocalDate.now())){
-                    System.out.println(boleta.toString(cliente, boleta.getPeliula()));
+                    System.out.println(boleta.toString());
                 }
             }
         }
@@ -102,7 +103,7 @@ public class VideoStore {
         for(Cliente cliente : listaCliente){
             for (Boleta boleta : cliente.getBoletas()){
                 if(boleta.getFechaDevolucion().isEqual(LocalDate.now())){
-                    System.out.println(boleta.toString(cliente, boleta.getPeliula()));
+                    System.out.println(boleta.toString());
                 }
             }
         }
@@ -116,6 +117,13 @@ public class VideoStore {
             }
         }
         System.out.println(mayor.toString());
+    }
+
+    //Quiere poder consultar los últimos 10 alquileres de cada cliente.
+    public void consultaAlquileres(Cliente cliente){
+        for (Boleta boleta : cliente.getBoletas()){
+            System.out.println(boleta.toString());
+        }
     }
 
 }
